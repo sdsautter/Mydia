@@ -1,0 +1,32 @@
+{
+  "name": "mydia",
+  "version": "1.0.0",
+  "description": "A social website to store all of the media you own as well as see what other people own",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdsautter/Mydia.git"
+  },
+  "keywords": [
+    "mydia"
+  ],
+  "author": "Group Awesome Sauce",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sdsautter/Mydia/issues"
+  },
+  "homepage": "https://github.com/sdsautter/Mydia#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "chai": "^4.0.1",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.9",
+    "mocha": "^3.4.2",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.4"
+  }
+}
