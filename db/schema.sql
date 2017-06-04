@@ -1,0 +1,1 @@
+CREATE DATABASE mydia_db;
