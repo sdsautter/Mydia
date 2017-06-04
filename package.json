@@ -27,6 +27,7 @@
     "method-override": "^2.3.9",
     "mocha": "^3.4.2",
     "mysql": "^2.13.0",
+    "pug": "^2.0.0-rc.2",
     "sequelize": "^3.30.4"
   }
 }
