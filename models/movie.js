@@ -7,10 +7,21 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    uniqueID: {
+      type: DataTypes.INTEGER,
+    },
     director: {
       type: DataTypes.STRING,
       allowNull: false,
       len: [1]
+    },
+    genre: {
+      type: DataTypes.STRING,
+      allowNull:false,
+      len:[1]
+    },
+    views: {
+      type: DataTypes.INTEGER
     }
   },
     {
