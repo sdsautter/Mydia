@@ -11,11 +11,34 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
+    app.get('/:user', function(req, res) {
+        db.User.findAll({
+            where: {
+                id: req.body.id
+            }
+        }).then(function(userData) {
+            res.render('user', userData)
+        });
+    }),
 
+    app.get('/movies/:id', function(req, res) {
+        db.Movie.findAll({
+            where: {
+                id: req.body.id
+            }
+        }).then(function(movieData) {
+            res.render('movie', movieData)
+        });
+    }),
 
-//  **** search will include all api data for browsing
-// "/:username" = user specific page
-// "/movies/:unique movie id"
-// "/music/:unique album id"
+    app.get('/music/:id', function(req, res) {
+        db.Music.findAll({
+            where: {
+                name: req.body.name
+            }
+        }).then(function(musicData) {
+            res.render('music', musicData)
+        });
+    })
 
 };
