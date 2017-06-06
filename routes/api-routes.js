@@ -12,5 +12,10 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
-    
+
+//  **** search will include all api data for browsing
+// "/:username" = user specific page
+// "/movies/:unique movie id"
+// "/music/:unique album id"
+
 };
