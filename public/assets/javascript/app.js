@@ -1,3 +1,5 @@
+var omdbKey = OmdbConfig.apikey;
+
 $("#lookie").on("click", function(event){
     event.preventDefault();
 
@@ -6,4 +8,3 @@ $("#lookie").on("click", function(event){
 
     console.log(query);
 });
-
