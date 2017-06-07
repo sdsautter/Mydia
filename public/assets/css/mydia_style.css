@@ -1,0 +1,17 @@
+#overlay {
+     background-color: rgba(0, 0, 0, 0.25);
+     position: fixed;
+     top: 0;
+     left: 0;
+     min-height: 100%;
+}
+#navbar {
+    background-color: #6FB98F;
+}
+#lookie {
+    background-color: #004445;
+}
+#moviedump {
+    background-color: #021C1E;
+    height: 100px;
+}
