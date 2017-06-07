@@ -1,10 +1,18 @@
-var omdbKey = OmdbConfig.apikey;
+var omdbKey = OmdbConfig.apiKey;
 
 $("#lookie").on("click", function(event){
     event.preventDefault();
 
-    var query = $("#search").val().trim();
-    var replaced = query.replace(/\s/g, '+');
+    var movie = $("#search").val().trim();
+    var replaced = movie.replace(/\s/g, '+');
+    var query = "http://www.omdbapi.com/?apikey=" + omdbKey + "&s=" + movie + "&r=json";
 
-    console.log(query);
+    $.get(query, function(data) {
+    	console.log(data);
+    });
+
+    // console.log(query);
 });
+
+console.log(omdbKey);
+
