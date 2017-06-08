@@ -18,7 +18,9 @@
     background-color: #6FB98F;
 }
 #lookie {
-    background-color: #004445;
+    background-color: #6FB98F;
+    border: #6FB98F;
+    color: #222;
 }
 #moviedump {
     background-color: #021C1E;
@@ -115,10 +117,6 @@
 }
 body {
   background: #2C7873; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #2C7873, #6FB98F);
-  background: -moz-linear-gradient(right, #2C7873, #6FB98F);
-  background: -o-linear-gradient(right, #2C7873, #6FB98F);
-  background: linear-gradient(to left, #2C7873, #6FB98F);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
