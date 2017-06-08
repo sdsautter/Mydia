@@ -14,5 +14,7 @@ $("#lookie").on("click", function(event){
     // console.log(query);
 });
 
-console.log(omdbKey);
+$('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
 
