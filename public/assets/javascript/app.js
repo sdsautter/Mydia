@@ -1,4 +1,5 @@
-var omdbKey = OmdbConfig.apiKey;
+var omdbKey = OmdbConfig.apiKey,
+    lastFmKey = LastFmConfig.apiKey;
 
 $("#lookie").on("click", function(event) {
     event.preventDefault();
@@ -6,7 +7,9 @@ $("#lookie").on("click", function(event) {
     var mediaSearch = $("#search").val().trim();
     var mediaSearch = mediaSearch.replace(/\s/g, '+');
 
+    // albumSearch(mediaSearch);
     movieSearch(mediaSearch);
+    // bookSearch(mediaSearch);
 
 });
 
@@ -23,6 +26,12 @@ function movieSearch(movie) {
 //API call for google books
 function bookSearch(book) {
     var query = "https://www.googleapis.com/books/v1/volumes?q=" + book;
+    getSearch(query);
+}
+
+//API call for a last.fm album search
+function albumSearch(album) {
+    var query = "http://ws.audioscrobbler.com/2.0/?method=album.search&album=" + album + "&limit=30&api_key=" + lastFmKey + "&format=json"
     getSearch(query);
 }
 
