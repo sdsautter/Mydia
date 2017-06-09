@@ -1,15 +1,17 @@
 var omdbKey = OmdbConfig.apiKey,
-    lastFmKey = LastFmConfig.apiKey;
+    lastFmKey = LastFmConfig.apiKey,
+    giantBombKey = GiantBombConfig.apiKey;
 
 $("#lookie").on("click", function(event) {
     event.preventDefault();
 
     var mediaSearch = $("#search").val().trim();
-    var mediaSearch = mediaSearch.replace(/\s/g, '+');
+    mediaSearch = mediaSearch.replace(/\s/g, '+');
 
     // albumSearch(mediaSearch);
     movieSearch(mediaSearch);
     // bookSearch(mediaSearch);
+    // videoGameSearch(mediaSearch);
 
 });
 
@@ -31,7 +33,13 @@ function bookSearch(book) {
 
 //API call for a last.fm album search
 function albumSearch(album) {
-    var query = "http://ws.audioscrobbler.com/2.0/?method=album.search&album=" + album + "&limit=30&api_key=" + lastFmKey + "&format=json"
+    var query = "http://ws.audioscrobbler.com/2.0/?method=album.search&album=" + album + "&limit=30&api_key=" + lastFmKey + "&format=json";
+    getSearch(query);
+}
+
+//API call for giant bomb's video game search
+function videoGameSearch(game) {
+    var query = "http://www.giantbomb.com/api/search/?api_key=" + giantBombKey + "&format=json&query=" + game + "&resources=game";
     getSearch(query);
 }
 
