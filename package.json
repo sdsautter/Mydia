@@ -24,6 +24,7 @@
     "chai": "^4.0.1",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.10",
     "method-override": "^2.3.9",
     "mocha": "^3.4.2",
     "mysql": "^2.13.0",
