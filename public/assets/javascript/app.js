@@ -6,7 +6,7 @@ $("#lookie").on("click", function(event) {
     event.preventDefault();
 
     var mediaSearch = $("#search").val().trim();
-    var mediaSearch = mediaSearch.replace(/\s/g, '+');
+    mediaSearch = mediaSearch.replace(/\s/g, '+');
 
     // albumSearch(mediaSearch);
     movieSearch(mediaSearch);
