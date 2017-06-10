@@ -25,6 +25,12 @@ function movieSearch(movie) {
     getSearch(query);
 }
 
+//API call to populate movie 
+function movieModal(imdbId) {
+    var query = "http://www.omdbapi.com/?apikey=" + omdbKey + "&i=" + imdbId + "&r=json";
+    getSearch(query);
+}
+
 //API call for google books
 function bookSearch(book) {
     var query = "https://www.googleapis.com/books/v1/volumes?q=" + book;
