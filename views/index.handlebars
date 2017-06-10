@@ -28,10 +28,7 @@
       {{#each movie}}
             <div class='col-md-4 text-center'>
               <span id='moviename'>{{this.title}}</span>
-              <form action="/{{this.rating}}?_method=PUT" method="POST">
-                <input type="hidden" name="rating" value="0">
-                <img src="{{poster}}" class="img-fluid">
-              </form>
+              <img src="{{this.Poster}}" alt="{{this.title}}">
             </div>
       {{/each}}
 
@@ -42,8 +39,8 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-  <script id="keys" src="assets/config.js"></script>
-  <script src="./assets/javascript/app.js"></script>
+  <script id="keys" src="../../../assets/config.js"></script>
+  <script src="../../../assets/javascript/app.js"></script>
 
 </body>
 

@@ -21,6 +21,7 @@
   "homepage": "https://github.com/sdsautter/Mydia#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "browserify": "^14.4.0",
     "chai": "^4.0.1",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
