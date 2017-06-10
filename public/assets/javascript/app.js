@@ -43,6 +43,11 @@ function albumSearch(album) {
     getSearch(query);
 }
 
+//API call to get information about a specific album if you use their own ID
+function movieModal(mbidId) {
+    var query = "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&&mbid=" + mbidId + "&api_key=" + lastFmKey + "&format=json"
+}
+
 //API call for giant bomb's video game search
 function videoGameSearch(game) {
     var query = "http://www.giantbomb.com/api/search/?api_key=" + giantBombKey + "&format=json&query=" + game + "&resources=game";
