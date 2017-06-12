@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+	<div id="chat"></div>
+	<p>
+	<form>
+		<textarea id="chatBox"></textarea>
+		<button id="submit">Submit</button>
+	</form>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyAXviW3rmNraHYDEfAqW7J101ABRkduuKQ",
+	    authDomain: "mydia-faec4.firebaseapp.com",
+	    databaseURL: "https://mydia-faec4.firebaseio.com",
+	    projectId: "mydia-faec4",
+	    storageBucket: "mydia-faec4.appspot.com",
+	    messagingSenderId: "983017248790"
+	  };
+
+	  firebase.initializeApp(config);
+
+	  var database = firebase.database();
+	
+
+	function setConvo() { 
+	  localStorage.setItem("convo", Math.floor(Math.random() * 100));
+	
+	  var convo = localStorage.getItem("convo");
+
+
+	function addChat(convo) {
+		$("#submit").click(function() {
+			database.ref(convo).push({
+				convo: "NAME: " + $("#chatBox <p>").val()
+			});
+		});
+	};
+
+	function updateChat(convo) {
+		database.ref(convo).on("value", function(snapshot) {
+
+		});
+	};
+
+	  database.ref("convoNums").once("value").then(function(snapshot) {
+	  	convoNums = snapshot.val();
+	  	if (convoNums.indexOf(convo) == -1) {
+		  	convoNums.push(convo);
+		  	console.log(convoNums);
+		  } else {
+		  	setConvo();
+		  	return;
+		  }
+
+		  database.ref().set({
+		  	convoNums: convoNums
+		  });
+
+		  database.ref(convo).set({
+		  	convo: "Start Chatting! <p>"
+		  });
+
+		  addChat();
+
+
+
+
+		  window.onunload = function() {
+		  	database.ref(convo).remove();
+		  	var index = convoNums.indexOf(convo);
+		  	convoNums.splice(index, 1);
+		  	database.ref().set({
+			  	convoNums: convoNums
+			  });
+		  };
+	  });
+
+
+	  
+	}
+
+	function chat() {
+
+	};
+
+	  setConvo();
+
+
+	</script>
+</html>
