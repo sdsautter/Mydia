@@ -14,25 +14,16 @@ module.exports = function (app) {
     app.get("/search/movie/:title", function (req, res) {
         var movieTitle = req.params.title;
 
-        //If the movie detail array has something in it, then it first clears out the arrays before going up the movie loop
-        if (movieDetailArray.length > 0) {
-            movieSearchArray = [];
-            movieDetailArray = [];
+        movieSearchArray = [];
+        movieDetailArray = [];
 
-            movieLoopArray(movieTitle, function (data) {
-                var movie = {
-                    movie: data
-                };
-                res.render("index", movie);
-            });
-        } else {
-            movieLoopArray(movieTitle, function (data) {
-                var movie = {
-                    movie: data
-                };
-                res.render("index", movie);
-            });
-        }
+        movieLoopArray(movieTitle, function (data) {
+            var movie = {
+                movie: data
+            };
+            res.render("index", movie);
+        });
+
     });
 
 
@@ -63,27 +54,26 @@ module.exports = function (app) {
 
     //This is the callback loop. If the page is less than 4, then we do a movie search and push the results to an array
     function movieLoopArray(movieTitle, cb) {
-        if (page < 4) {
-            movieSearch(movieTitle, function (data) {
-                for (var i = 0; i < data.Search.length; i++) {
-                    movieSearchArray.push(data.Search[i]);
-                }
 
-                page++;
-                if (page < 4) {
-                    movieLoopArray(movieTitle, cb);
-                } else {
-                    //If the page is 4, then we run our array through the movie details search and reset the page number
-                    movieDetailsLoop(movieSearchArray, function (data) {
-                        page = 1;
+        movieSearch(movieTitle, function (data) {
+            for (var i = 0; i < data.Search.length; i++) {
+                movieSearchArray.push(data.Search[i]);
+            }
 
-                        return cb(movieDetailArray);
+            page++;
+            if (page < 4) {
+                movieLoopArray(movieTitle, cb);
+            } else {
+                //If the page is 4, then we run our array through the movie details search and reset the page number
+                movieDetailsLoop(movieSearchArray, function (data) {
+                    page = 1;
 
-                    });
-                }
+                    return cb(movieDetailArray);
 
-            });
-        }
+                });
+            }
+        });
+
     }
 
     //We loop through the movie search array to get more data from each movie in order to push that to its own array
