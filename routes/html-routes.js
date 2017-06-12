@@ -17,8 +17,8 @@ module.exports = function(app) {
     //   res.sendFile(path.join(__dirname + "/../views/layouts/main.handlebars"));
     // });
 
-    app.get('/', function(req, res) {
-        res.render('index', { title: 'Hey', message: 'Hello there!' })
-    })
+  app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "/../public/login.html"));
+  });
 
 };
