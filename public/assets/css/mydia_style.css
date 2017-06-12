@@ -159,6 +159,11 @@ body {
   -ms-animation-fill-mode:forwards; /*IE 10+*/
 }
 
+.modal-poster {
+  position: relative !important;
+  max-width: 100% !important;
+}
+
 @keyframes animationFrames{
   0% {
     opacity:0;

@@ -2,65 +2,152 @@
 <html lang="en">
 
 <body>
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded" id="navbar">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Mydia</a>
+    <a class="navbar-brand" href="#">Mydia</a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Libaries</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input id="search" class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button id="lookie" class="btn" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-<div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Libaries</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input id="search" class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button id="lookie" class="btn" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <div class="container-fluid">
     <div class="row">
       {{#each movie}}
-            <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.imdbID}}">
-            <img src="{{this.Poster}}" alt="{{this.Title}}">
-            </div>
+      <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.imdbID}}">
+        <img src="{{this.Poster}}" alt="{{this.Title}}">
+      </div>
 
-    <div class="modal fade" id="{{this.imdbID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal fade" id="{{this.imdbID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Movie Information</h4>
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <div class="row">
+                <div class="col-12">
+                  <h4 class="modal-title">{{this.Title}} ({{this.Year}})</h4>
                 </div>
-                <div class="modal-body">
-                    <div id="modalPlot">MODAL PLOT</div>
-                    <div id="modalYear">{{this.Year}}</div>
-                    <select>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-4">
+                  <img class="modal-poster" src="{{this.Poster}}">
+                </div>
+                <div class="col-8">
+                  <div id="modalPlot">{{this.Plot}}</div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-12">
+                  <div id="director"><strong>Director:</strong> {{this.Director}}</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div id="actors"><strong>Actors:</strong> {{this.Actors}}</div>
+                </div>
+              </div>
+              <br>
+              <select>
                         <option value="Blu">Blu-Ray</option>
                         <option value="DVD">DVD</option>
                         <option value="VHS">VHS</option>
                     </select><br><br>
-                    <button type="button" class="btn btn-default" id="modalButton">TEST</button>
-                </div>
-                <div class="modal-footer">
-                    <!-- footer area with buttons for a continued dialog -->
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+              <button type="button" class="btn btn-default" id="modalButton">TEST</button>
             </div>
-            <!-- /.modal-content -->
+            <div class="modal-footer">
+              <!-- footer area with buttons for a continued dialog -->
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
-    </div>
+      </div>
+      {{/each}}
+      
+      
+      
+     
+
+     
+      
+      {{#each book}}
+      <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.id}}">
+        <img src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}">
+      </div>
+
+      <div class="modal fade" id="{{this.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <div class="row">
+                <div class="col-12">
+                  <h4 class="modal-title">{{this.volumeInfo.title}}</h4>
+                </div>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-4">
+                  <img class="modal-poster" src="{{this.volumeInfo.imageLinks.thumbnail}}">
+                </div>
+                <div class="col-8">
+                  <div id="modalPlot">{{this.volumeInfo.description}}</div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-12">
+                  <div id="author"><strong>Author(s):</strong> {{this.volumeInfo.authors}}</div>
+                </div>
+                <div class="col-12">
+                  <div id="publisher"><strong>Publisher:</strong> {{this.volumeInfo.publisher}}</div>
+                </div>
+                <div class="col-12">
+                    <div id="publishedDate"><strong>Published:</strong> {{this.volumeInfo.publishedDate}}</div>
+                </div>
+              </div>
+              
+              <br>
+              <select>
+                        <option value="Hard">Hard Cover</option>
+                        <option value="Paper">Paperback</option>
+                        <option value="Digital">Digital</option>
+                    </select><br><br>
+              <button type="button" class="btn btn-default" id="modalButton">TEST</button>
+            </div>
+            <div class="modal-footer">
+              <!-- footer area with buttons for a continued dialog -->
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
       {{/each}}
 
     </div>
-</div>
+  </div>
   <!-- Custom Script -->
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -71,7 +158,7 @@
 </body>
 
 </html>
-    <!-- Creates the bootstrap modal where the image will appear -->
-    <!-- Modal -->
+<!-- Creates the bootstrap modal where the image will appear -->
+<!-- Modal -->
 
-    <!-- /.modal -->
+<!-- /.modal -->
