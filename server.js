@@ -33,6 +33,7 @@ app.use(methodOverride("_method"));
 
 
 require("./routes/api-routes.js")(app);
+require('./routes/user-api-routes.js')(app);
 require("./routes/html-routes.js")(app);
 require("./controllers/omdb_controller.js")(app);
 require("./controllers/google_books_controller.js")(app);
@@ -49,7 +50,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Syncing our sequelize models and then starting our express app
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });
