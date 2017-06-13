@@ -63,32 +63,53 @@
                 </div>
               </div>
               <br>
-              <select>
-                        <option value="Blu">Blu-Ray</option>
+              <form action="/api/movie/{{this.id}}?_method=PUT" method="POST">
+                <label for="userFormat">Format you own:</label>
+                <select id="userformat" name="user_format">
+                        <option value="BluRay">Blu-Ray</option>
                         <option value="DVD">DVD</option>
                         <option value="VHS">VHS</option>
-                    </select><br><br>
-              <button type="button" class="btn btn-default" id="modalButton">TEST</button>
+                        <option value="Digital">Digital</option>
+                        <option value="Other">Other</option>                        
+              </select>
+                <br><br>
+                <label for="userRating">Rate This Movie:</label>
+                <select id="userRating" name="user_rating">
+                  <option value="0">No Rating</option>
+                  <option value="1">1 Star</option>
+                  <option value="2">2 Stars</option>
+                  <option value="3">3 Stars</option>
+                  <option value="4">4 Stars</option>
+                  <option value="5">5 Stars</option>                  
+              </select>
+                <br><br>
+                <label for="userComment">Comment:</label>
+                <br>
+                <textarea id="userComment" name="user_comment" cols="50"> </textarea>
+                <br>
+                <input type="hidden" name="plot" value="{{this.Plot}}">
+                <input type="hidden" name="genre" value="{{this.Genre}}">
+                <input type="hidden" name="director" value="{{this.Director}}">
+                <input type="hidden" name="actors" value="{{this.Actors}}">
+                <input type="hidden" name="year" value="{{this.Year}}">
+                <input type="hidden" name="genre" value="{{this.Genre}}">
+                <input type="hidden" name="imdbId" value="{{this.imdbID}}">
+                <input type="hidden" name="poster" value="{{this.Poster}}">
+
+                <button type="submit">Add to Collection</button>
+
+              </form>
             </div>
             <div class="modal-footer">
               <!-- footer area with buttons for a continued dialog -->
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
           <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
       </div>
-      {{/each}}
-      
-      
-      
-     
-
-     
-      
-      {{#each book}}
+      {{/each}} {{#each book}}
       <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.id}}">
         <img src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}">
       </div>
@@ -122,10 +143,10 @@
                   <div id="publisher"><strong>Publisher:</strong> {{this.volumeInfo.publisher}}</div>
                 </div>
                 <div class="col-12">
-                    <div id="publishedDate"><strong>Published:</strong> {{this.volumeInfo.publishedDate}}</div>
+                  <div id="publishedDate"><strong>Published:</strong> {{this.volumeInfo.publishedDate}}</div>
                 </div>
               </div>
-              
+
               <br>
               <select>
                         <option value="Hard">Hard Cover</option>
@@ -144,15 +165,126 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
+      {{/each}} {{#each album}}
+      <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.mbid}}">
+        <img src="{{this.Poster}}" alt="{{this.name}}">
+      </div>
+
+      <div class="modal fade" id="{{this.mbid}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <div class="row">
+                <div class="col-12">
+                  <h4 class="modal-title">"{{this.name}}" by {{this.artist}}</h4>
+                </div>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-4">
+                  <img class="modal-poster" src="{{this.Poster}}">
+                </div>
+                <div class="col-8">
+                  <div id="modalTracks">
+                    {{#each this.tracks}}
+                    <ol>
+                      <li>{{this.track.name}}</li>
+                    </ol>
+                    {{/each}}
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-12">
+                  <div id="director"><strong>Director:</strong> {{this.Director}}</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div id="actors"><strong>Actors:</strong> {{this.Actors}}</div>
+                </div>
+              </div>
+              <br>
+              <select>
+                        <option value="Blu">Blu-Ray</option>
+                        <option value="DVD">DVD</option>
+                        <option value="VHS">VHS</option>
+                    </select><br><br>
+              <button type="button" class="btn btn-default" id="modalButton">TEST</button>
+            </div>
+            <div class="modal-footer">
+              <!-- footer area with buttons for a continued dialog -->
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      {{/each}} {{#each album}}
+      <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.mbid}}">
+        <img src="{{this.Poster}}" alt="{{this.name}}">
+      </div>
+
+      <div class="modal fade" id="{{this.mbid}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <div class="row">
+                <div class="col-12">
+                  <h4 class="modal-title">"{{this.name}}" by {{this.artist}}</h4>
+                </div>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-4">
+                  <img class="modal-poster" src="{{this.Poster}}">
+                </div>
+                <div class="col-8">
+                  <div id="modalTracks">
+                    <ol>
+                      {{#each this.tracks}}
+                      <li>{{this.name}} {{/each}}
+                    </ol>
+                  </div>
+                </div>
+              </div>
+              <br>
+
+              <br>
+              <select>
+                        <option value="Blu">Blu-Ray</option>
+                        <option value="DVD">DVD</option>
+                        <option value="VHS">VHS</option>
+                    </select><br><br>
+              <button type="button" class="btn btn-default" id="modalButton">TEST</button>
+            </div>
+            <div class="modal-footer">
+              <!-- footer area with buttons for a continued dialog -->
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
       {{/each}}
+
+
 
     </div>
   </div>
   <!-- Custom Script -->
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script id="keys" src="../../../assets/config.js"></script>
   <script src="../../../assets/javascript/app.js"></script>
 
 </body>
