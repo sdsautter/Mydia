@@ -47,7 +47,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     views: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   },
     {
