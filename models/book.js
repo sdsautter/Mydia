@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Movie = sequelize.define("Movie", {
+  var Book = sequelize.define("Book", {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -7,30 +7,30 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    imdbId: {
+    id: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    director: {
+    authors: {
       type: DataTypes.TEXT,
       allowNull: false,
       len: [1]
     },
-    actors: {
+    publisher: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    plot: {
+    description: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    genre: {
+    published_date: {
       type: DataTypes.STRING,
       allowNull:false,
       len:[1]
     },
-    year: {
-      type: DataTypes.INTEGER,
+    cover: {
+      type: DataTypes.STRING,
       allowNull:false,
       len:[1]
     }, 
@@ -45,18 +45,14 @@ module.exports = function(sequelize, DataTypes) {
     user_format: {
       type: DataTypes.STRING,
       allowNull: true
-    },
-    views: {
-      type: DataTypes.INTEGER,
-      allowNull: true
     }
   },
     {
       // We're saying that we want our User to have Posts
       classMethods: {
         associate: function(models) {
-          // An User (foreignKey) is required or a Movie can't be made
-          Movie.belongsTo(models.User, {
+          // An User (foreignKey) is required or a Book can't be made
+          Book.belongsTo(models.User, {
             foreignKey: {
               allowNull: false
             }
@@ -65,5 +61,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   );
-  return Movie;
+  return Book;
 };
