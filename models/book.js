@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    id: {
+    google_id: {
       type: DataTypes.STRING,
       allowNull: false
     },
