@@ -7,18 +7,44 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    uniqueID: {
-      type: DataTypes.INTEGER,
+    imdbId: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     director: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       len: [1]
+    },
+    actors: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    plot: {
+      type: DataTypes.TEXT,
+      allowNull: false
     },
     genre: {
       type: DataTypes.STRING,
       allowNull:false,
       len:[1]
+    },
+    year: {
+      type: DataTypes.INTEGER,
+      allowNull:false,
+      len:[1]
+    }, 
+    user_rating: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    user_comment: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    user_format: {
+      type: DataTypes.STRING,
+      allowNull: true
     },
     views: {
       type: DataTypes.INTEGER
