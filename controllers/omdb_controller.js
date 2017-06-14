@@ -54,27 +54,57 @@ module.exports = function (app) {
 
     //This is the callback loop. If the page is less than 4, then we do a movie search and push the results to an array
     function movieLoopArray(movieTitle, cb) {
-
         movieSearch(movieTitle, function (data) {
-            for (var i = 0; i < data.Search.length; i++) {
-                movieSearchArray.push(data.Search[i]);
-            }
+            if (data.totalResults > 20) {
+                for (var i = 0; i < data.Search.length; i++) {
+                    movieSearchArray.push(data.Search[i]);
+                }
 
-            page++;
-            if (page < 4) {
-                movieLoopArray(movieTitle, cb);
-            } else {
-                //If the page is 4, then we run our array through the movie details search and reset the page number
-                movieDetailsLoop(movieSearchArray, function (data) {
-                    page = 1;
+                page++;
+                if (page < 4) {
+                    movieLoopArray(movieTitle, cb);
+                } else {
+                    //If the page is 4, then we run our array through the movie details search and reset the page number
+                    movieDetailsLoop(movieSearchArray, function (data) {
+                        page = 1;
 
-                    return cb(movieDetailArray);
+                        return cb(movieDetailArray);
 
-                });
+                    });
+                }
+            } else if (data.totalResults > 10 && data.totalResults <= 20) {
+                for (var i = 0; i < data.Search.length; i++) {
+                    movieSearchArray.push(data.Search[i]);
+                }
+                page++;
+                if (page < 3) {
+                    movieLoopArray(movieTitle, cb);
+                } else {
+                    //If the page is 4, then we run our array through the movie details search and reset the page number
+                    movieDetailsLoop(movieSearchArray, function (data) {
+                        page = 1;
+                        return cb(movieDetailArray);
+                    });
+                }
+            } else if (data.totalResults <= 10) {
+                for (var i = 0; i < data.Search.length; i++) {
+                    movieSearchArray.push(data.Search[i]);
+                }
+                page++;
+                if (page < 2) {
+                    movieLoopArray(movieTitle, cb);
+                } else {
+                    //If the page is 4, then we run our array through the movie details search and reset the page number
+                    movieDetailsLoop(movieSearchArray, function (data) {
+                        page = 1;
+
+                        return cb(movieDetailArray);
+                    });
+                }
             }
         });
-
     }
+
 
     //We loop through the movie search array to get more data from each movie in order to push that to its own array
     function movieDetailsLoop(movieSearchArray, cb) {
