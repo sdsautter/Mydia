@@ -10,4 +10,15 @@ module.exports = function(app) {
             res.json(userData);
         });
     });
+
+    app.get('/api/user', function(req, res) {
+        var userCheck = req._parsedOriginalUrl.query;
+        db.User.findOne({
+            where: {
+                user_name: userCheck
+            }
+        }).then(function(userData) {
+            res.json(userData)
+        })
+    })
 };
