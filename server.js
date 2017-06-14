@@ -40,7 +40,7 @@ require("./controllers/google_books_controller.js")(app);
 require("./controllers/giant_bomb_controller.js")(app);
 require("./controllers/last_fm_controller.js")(app);
 require("./routes/movie-api-routes.js")(app);
-
+require("./routes/book-api-routes.js")(app);
 
 // Set Handlebars.
 // var exphbs = require("express-handlebars");
