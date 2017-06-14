@@ -13,26 +13,27 @@ module.exports = function(sequelize, DataTypes) {
     },
     director: {
       type: DataTypes.TEXT,
-      allowNull: false,
-      len: [1]
+      allowNull: false
     },
     actors: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     },
     plot: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
+    },
+    poster: {
+      type: DataTypes.STRING,
+      allowNull:true
     },
     genre: {
       type: DataTypes.STRING,
-      allowNull:false,
-      len:[1]
+      allowNull:true
     },
     year: {
       type: DataTypes.INTEGER,
-      allowNull:false,
-      len:[1]
+      allowNull:true
     }, 
     user_rating: {
       type: DataTypes.INTEGER,
@@ -50,15 +51,15 @@ module.exports = function(sequelize, DataTypes) {
     {
       // We're saying that we want our User to have Posts
       classMethods: {
-        associate: function(models) {
-          // An User (foreignKey) is required or a Movie can't be made
-          Movie.belongsTo(models.User, {
-            foreignKey: {
-              allowNull: false
-            }
-          });
+        // associate: function(models) {
+        //   // An User (foreignKey) is required or a Movie can't be made
+        //   Movie.belongsTo(models.User, {
+        //     foreignKey: {
+        //       allowNull: false
+        //     }
+        //   });
         }
-      }
+      // }
     }
   );
   return Movie;
