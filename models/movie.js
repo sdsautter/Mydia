@@ -45,10 +45,6 @@ module.exports = function(sequelize, DataTypes) {
     user_format: {
       type: DataTypes.STRING,
       allowNull: true
-    },
-    views: {
-      type: DataTypes.INTEGER,
-      allowNull: true
     }
   },
     {
