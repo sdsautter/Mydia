@@ -42,7 +42,7 @@ module.exports = function (app) {
 
     //This uses the imdbID we got from the movie search request to get more details about the movie
     function movieDetails(imdbId, cb) {
-        request(`http://www.omdbapi.com/?apikey=${omdbKey}&i=${imdbId}&r=json`, function (error, response, body) {
+        request(`http://www.omdbapi.com/?apikey=${omdbKey}&i=${imdbId}&plot=full&r=json`, function (error, response, body) {
 
             // If the request is successful (i.e. if the response status code is 200)
             if (!error && response.statusCode === 200) {
@@ -80,6 +80,9 @@ module.exports = function (app) {
     function movieDetailsLoop(movieSearchArray, cb) {
 
         movieDetails(movieSearchArray[loopIndex].imdbID, function (data) {
+            var plot = data.Plot;
+            var replaceQuote = plot.replace(/"/g, "'");
+            data.New_Plot = replaceQuote;
             movieDetailArray.push(data);
             loopIndex++;
 
