@@ -21,4 +21,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "/../public/login.html"));
   });
 
+  app.get('/home', function(req, res) {
+        res.render("index")
+    })
 };

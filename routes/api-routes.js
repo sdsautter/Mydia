@@ -11,10 +11,6 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
-    
-    app.get('/splash', function(req, res) {
-        res.render("index")
-    })
 
     // app.get('/:user', function(req, res) {
     //     db.User.findAll({
