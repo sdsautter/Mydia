@@ -26,3 +26,5 @@ function createUser(userData) {
         window.location.href = '/'
     })
 }
+//used to hide scrollable div areas of user content.
+$(".respond").hide();
