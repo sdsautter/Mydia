@@ -28,7 +28,8 @@ module.exports = function (app) {
             user_comment: req.body.user_comment,
             user_format: req.body.user_format
         }).then(function (dbBook) {
-            res.redirect("/search/book/" + req.body.title);
+            var redirectUrl = res.req.headers.referer + "#";
+            res.redirect(redirectUrl);
         });
     });
 
