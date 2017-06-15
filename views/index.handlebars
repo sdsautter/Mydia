@@ -12,17 +12,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/splash">Libraries<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Libaries</a>
         </li>
       </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input id="search" class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button id="lookie" class="btn" type="submit">Search</button>
+      </form>
     </div>
   </nav>
   <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12 heads respond movierespond">Movies</div>
-      <div class="col-md-12 h-scroll respond movierespond"> 
       {{#each movie}}
-
       <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.imdbID}}">
         <img src="{{this.Poster}}" alt="{{this.Title}}">
       </div>
@@ -105,11 +109,6 @@
         <!-- /.modal-dialog -->
       </div>
       {{/each}} 
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3 heads respond bookrespond">Books</div>
-      <div class="col-md-12 h-scroll respond bookrespond"> 
       {{#each book}}
       <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.id}}">
         <img src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}">
@@ -192,13 +191,7 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
-      {{/each}}
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3 heads respond albumrespond">Albums</div>
-      <div class="col-md-12 h-scroll respond albumrespond"> 
-       {{#each album}}
+      {{/each}} {{#each album}}
       <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.mbid}}">
         <img src="{{this.Poster}}" alt="{{this.name}}">
       </div>
@@ -257,13 +250,7 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
-      {{/each}} 
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3 heads respond secondalbumrespond">Albums</div>
-      <div class="col-md-12 h-scroll respond secondalbumrespond"> 
-      {{#each album}}
+      {{/each}} {{#each album}}
       <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.mbid}}">
         <img src="{{this.Poster}}" alt="{{this.name}}">
       </div>
@@ -313,11 +300,10 @@
         <!-- /.modal-dialog -->
       </div>
       {{/each}}
-      </div>
+
+
+
     </div>
-
-
-
   </div>
   <!-- Custom Script -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
