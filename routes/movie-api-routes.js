@@ -1,16 +1,7 @@
-// *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
-
-// Dependencies
-// =============================================================
-
-// Requiring our models
 var db = require("../models");
 
-// Routes
-// =============================================================
 module.exports = function (app) {
+ //this is all filler for further flushing out of the website. it has not been tested. 
     app.get('/:user', function (req, res) {
             db.User.findAll({
                 where: {
@@ -43,9 +34,6 @@ module.exports = function (app) {
 
     // POST route for saving a new movie
     app.post("/api/movie", function (req, res) {
-        // create takes an argument of an object describing the item we want to
-        // insert into our table. In this case we just we pass in an object with a text
-        // and complete property (req.body)
         db.Movie.create({
             title: req.body.title,
             imdbId: req.body.imdbId,

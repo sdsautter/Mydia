@@ -51,16 +51,14 @@ module.exports = function(sequelize, DataTypes) {
     {
       // We're saying that we want our User to have Posts
       classMethods: {
-        // associate: function(models) {
-        //   // An User (foreignKey) is required or a Movie can't be made
-        //   Movie.belongsTo(models.User, {
-        //     foreignKey: {
-        //       allowNull: false
-        //     }
-        //   });
+        associate: function(models) {
+          // An User (foreignKey) is required or a Movie can't be made
+          Movie.belongsTo(models.User, {
+            foreignKey:  'user_name'
+          });
         }
       // }
     }
-  );
+    });
   return Movie;
 };

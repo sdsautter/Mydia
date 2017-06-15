@@ -45,7 +45,8 @@ function authenticatePassword(userData) {
         } else if (passwordAttempted != passwordToCheck) {
             alert('Incorrect Password!')
         } else {
-            sessionStorage.setItem('user', userTime.user_name)
+            sessionStorage.setItem('user', userTime.user_name);
+            sessionStorage.setItem('id', userTime.id);                      
             window.location.href = '/home'
         }
     })
