@@ -54,3 +54,10 @@ function authenticatePassword(userData) {
         }
     })
 }
+
+Handlebars.registerHelper("id", function(input){
+  return Session.get("id");
+});
+Handlebars.registerHelper("user", function(input){
+  return Session.get("user");
+});
