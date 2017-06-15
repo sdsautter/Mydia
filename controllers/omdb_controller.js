@@ -8,9 +8,7 @@ var movieDetailArray = [];
 var page = 1;
 var loopIndex = 0;
 
-
 module.exports = function (app) {
-    // GET route for getting all of the Burgers
     app.get("/search/movie/:title", function (req, res) {
         var movieTitle = req.params.title;
 
@@ -23,7 +21,6 @@ module.exports = function (app) {
             };
             res.render("index", movie);
         });
-
     });
 
 
