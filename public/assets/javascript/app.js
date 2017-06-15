@@ -21,6 +21,15 @@ $('.createuser').click(function() {
     createUser(newUser);
 })
 
+$('.login').click(function() {
+    event.preventDefault();
+    var user = {
+        name: $('#loginUser').val().trim(),
+        password: $('#loginPassword').val().trim()
+    };
+    authenticatePassword(user);
+})
+
 function createUser(userData) {
     $.post('/api/user', userData, function() {
         window.location.href = '/'
@@ -28,3 +37,19 @@ function createUser(userData) {
 }
 //used to hide scrollable div areas of user content.
 $(".respond").hide();
+
+
+function authenticatePassword(userData) {
+    $.get('/api/user', userData.name, function(userTime) {
+        var passwordAttempted = userData.password
+        var passwordToCheck = userTime.password;
+        if (userTime === null) {
+            alert('No User Found!')
+        } else if (passwordAttempted != passwordToCheck) {
+            alert('Incorrect Password!')
+        } else {
+            sessionStorage.setItem('user', userTime.user_name)
+            window.location.href = '/home'
+        }
+    })
+}
