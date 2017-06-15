@@ -22,6 +22,31 @@
     border-width: 2px;
     overflow-y: hidden;
 }
+.card-text {
+    text-align: center;
+    font-family: "Robot", sans-serif;
+    font-weight: bolder;
+    vertical-align: middle;
+}
+.card-block{
+  display: table;
+  width: 100%;
+}
+p {
+  text-align: center;
+  padding: 0 10%;
+  display: table-cell;
+}
+div.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 250px;
+    height: 315px;
+    margin: 10px;
+    color: #4d4d4d;
+}
+img {
+  max-height: 240px;
+}
 .heads {
     font-size: 2.5em; 
     font-weight: bold;

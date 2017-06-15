@@ -27,8 +27,11 @@
   <div class="container-fluid">
     <div class="row">
       {{#each movie}}
-      <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.imdbID}}">
-        <img src="{{this.Poster}}" alt="{{this.Title}}">
+      <div class='card text-center' data-toggle="modal" data-target="#{{this.imdbID}}">
+        <img class="card-img-top" src="{{this.Poster}}" alt="{{this.Title}}">
+        <div class="card-block">
+          <p class="card-text align-baseline">{{this.Title}}</p>
+        </div>
       </div>
 
       <div class="modal fade" id="{{this.imdbID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -110,8 +113,11 @@
       </div>
       {{/each}} 
       {{#each book}}
-      <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.id}}">
-        <img src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}">
+      <div class='card text-center' data-toggle="modal" data-target="#{{this.id}}">
+        <img class="card-img-top" src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}">
+        <div class="card-block">
+          <p class="card-text align-middle">{{this.volumeInfo.title}}</p>
+          </div>
       </div>
 
       <div class="modal fade" id="{{this.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -192,8 +198,11 @@
         <!-- /.modal-dialog -->
       </div>
       {{/each}} {{#each album}}
-      <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.mbid}}">
-        <img src="{{this.Poster}}" alt="{{this.name}}">
+      <div class='card text-center' data-toggle="modal" data-target="#{{this.mbid}}">
+        <img class='card-img-top' src="{{this.Poster}}" alt="{{this.name}}">
+        <div class='card-block'>
+            <p class="card-text align-middle">{{this.name}}</p>
+          </div>
       </div>
 
       <div class="modal fade" id="{{this.mbid}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -245,9 +254,11 @@
         <!-- /.modal-dialog -->
       </div>
       {{/each}} {{#each album}}
-      <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.mbid}}">
-        
-        <img src="{{this.mydia_image}}" alt="{{this.name}}">
+      <div class='card text-center' data-toggle="modal" data-target="#{{this.mbid}}">
+        <img class="card-img-top" src="{{this.mydia_image}}" alt="{{this.name}}">
+        <div class="card-block">
+          <p class="card-text align-middle">{{this.name}}</p>
+        </div>
       </div>
 
       <div class="modal fade" id="{{this.mbid}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -303,6 +314,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
   <script src="../../../assets/javascript/app.js"></script>
+</script>
 
 </body>
 

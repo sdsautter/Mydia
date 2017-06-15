@@ -38,7 +38,9 @@ function createUser(userData) {
 //used to hide scrollable div areas of user content.
 $(".respond").hide();
 
-
+$('img').on("error", function() {
+    $(this).parent().hide();
+});
 function authenticatePassword(userData) {
     $.get('/api/user', userData.name, function(userTime) {
         var passwordAttempted = userData.password
