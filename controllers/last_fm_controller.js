@@ -17,7 +17,6 @@ module.exports = function (app) {
                 var album = {
                     album: data
                 }
-                console.log(album.album);
                 res.render("index", album);
             })
         });
