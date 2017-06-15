@@ -17,7 +17,6 @@ module.exports = function (app) {
                 var album = {
                     album: data
                 }
-                
                 res.render("index", album);
             })
         });
@@ -31,6 +30,15 @@ module.exports = function (app) {
                 for (var i = 0; i < data.album.image.length; i++) {
                     if (data.album.image[i].size === "large") {
                         data.album.mydia_image = data.album.image[i]["#text"];
+                    }
+                }
+                if (data.album.tracks) {
+                    var trackListing = "";
+                    var trackNumber = 0;
+                    for (var i = 0; i < data.album.tracks.track.length; i++) {
+                        trackNumber = i + 1;
+                        trackListing += trackNumber + ") " + data.album.tracks.track[i].name + "\n";
+                        data.album.track_listing = trackListing;
                     }
                 }
             }
