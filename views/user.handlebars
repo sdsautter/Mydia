@@ -7,26 +7,22 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+    <a class="navbar-brand" href="#">Mydia: {{user}}</a>
 
-    <a class="navbar-brand" href="/home">Mydia</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Libaries</a>
+          <a class="nav-link" href="/splash">Libraries<span class="sr-only">(current)</span></a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input id="search" class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button id="lookie" class="btn" type="submit">Search</button>
-      </form>
     </div>
   </nav>
   <div class="container-fluid">
     <div class="row">
+        <div class="col-md-12 heads respond movierespond">Movies</div>
+      <div class="col-md-12 h-scroll respond movierespond"> 
       {{#each movie}}
+
       <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.imdbID}}">
         <img src="{{this.Poster}}" alt="{{this.Title}}">
       </div>
@@ -109,6 +105,11 @@
         <!-- /.modal-dialog -->
       </div>
       {{/each}} 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 heads respond bookrespond">Books</div>
+      <div class="col-md-12 h-scroll respond bookrespond"> 
       {{#each book}}
       <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.id}}">
         <img src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}">
@@ -191,7 +192,13 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
-      {{/each}} {{#each album}}
+      {{/each}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 heads respond albumrespond">Albums</div>
+      <div class="col-md-12 h-scroll respond albumrespond"> 
+       {{#each album}}
       <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.mbid}}">
         <img src="{{this.Poster}}" alt="{{this.name}}">
       </div>
@@ -214,7 +221,9 @@
                 <div class="col-8">
                   <div id="modalTracks">
                     {{#each this.tracks}}
-                    {{this.track}}
+                    <ol>
+                      <li>{{this.track.name}}</li>
+                    </ol>
                     {{/each}}
                   </div>
                 </div>
@@ -222,15 +231,19 @@
               <br>
               <div class="row">
                 <div class="col-12">
-                  <div id="Artist"><strong>Artist:</strong> {{this.artist}}</div>
+                  <div id="director"><strong>Director:</strong> {{this.Director}}</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div id="actors"><strong>Actors:</strong> {{this.Actors}}</div>
                 </div>
               </div>
               <br>
               <select>
-                        <option value="Vinyl">Vinyl</option>
-                        <option value="CD">DVD</option>
-                        <option value="Tape">Tape</option>
-                        <option value="Digital">Digital</option>                        
+                        <option value="Blu">Blu-Ray</option>
+                        <option value="DVD">DVD</option>
+                        <option value="VHS">VHS</option>
                     </select><br><br>
               <button type="button" class="btn btn-default" id="modalButton">TEST</button>
             </div>
@@ -244,10 +257,15 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
-      {{/each}} {{#each album}}
+      {{/each}} 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 heads respond secondalbumrespond">Albums</div>
+      <div class="col-md-12 h-scroll respond secondalbumrespond"> 
+      {{#each album}}
       <div class='col-md-4 text-center' data-toggle="modal" data-target="#{{this.mbid}}">
-        
-        <img src="{{this.mydia_image}}" alt="{{this.name}}">
+        <img src="{{this.Poster}}" alt="{{this.name}}">
       </div>
 
       <div class="modal fade" id="{{this.mbid}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -268,7 +286,8 @@
                 <div class="col-8">
                   <div id="modalTracks">
                     <ol>
-                      <li>{{this.tracks}}</li>
+                      {{#each this.tracks}}
+                      <li>{{this.name}} {{/each}}
                     </ol>
                   </div>
                 </div>
@@ -294,10 +313,11 @@
         <!-- /.modal-dialog -->
       </div>
       {{/each}}
-
-
-
+      </div>
     </div>
+
+
+
   </div>
   <!-- Custom Script -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

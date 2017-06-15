@@ -10,14 +10,14 @@ module.exports = function (app) {
     // GET route for getting all of the Burgers
     app.get("/search/album/:title", function (req, res) {
         var albumTitle = req.params.title;
-        
+
         albumSearch(albumTitle, function (data) {
             // console.log(data.results.albummatches);
-            albumLoops(data.results.albummatches.album, function(data) {
-                console.log(data);
+            albumLoops(data.results.albummatches.album, function (data) {
                 var album = {
                     album: data
                 }
+                
                 res.render("index", album);
             })
         });
@@ -27,6 +27,13 @@ module.exports = function (app) {
     function albumLoops(albumArray, cb) {
 
         albumDetails(albumArray[loopIndex].mbid, function (data) {
+            if (typeof data.album !== "undefined") {
+                for (var i = 0; i < data.album.image.length; i++) {
+                    if (data.album.image[i].size === "large") {
+                        data.album.mydia_image = data.album.image[i]["#text"];
+                    }
+                }
+            }
             albumDetailsArray.push(data.album);
             loopIndex++;
             if (loopIndex < albumArray.length) {
