@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var db = require("./models");
 var exphbs = require("express-handlebars");
-
+var Handlebars = require("handlebars");
 var app = express();
 var PORT = process.env.PORT || 8080;
 
@@ -25,6 +25,12 @@ require("./controllers/last_fm_controller.js")(app);
 require("./routes/movie-api-routes.js")(app);
 require("./routes/book-api-routes.js")(app);
 
+Handlebars.registerHelper("id", function(input){
+  return localStorage.get("id");
+});
+Handlebars.registerHelper("user", function(input){
+  return localStorage.get("user");
+});
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 

@@ -50,16 +50,11 @@ function authenticatePassword(userData) {
         } else if (passwordAttempted != passwordToCheck) {
             alert('Incorrect Password!')
         } else {
-            sessionStorage.setItem('user', userTime.user_name);
-            sessionStorage.setItem('id', userTime.id);                      
+            localStorage.setItem('user', userTime.user_name);
+            localStorage.setItem('id', userTime.id); 
+            console.log(localStorage.getItem('user'));                     
             window.location.href = '/home'
         }
     })
 }
 
-Handlebars.registerHelper("id", function(input){
-  return Session.get("id");
-});
-Handlebars.registerHelper("user", function(input){
-  return Session.get("user");
-});
