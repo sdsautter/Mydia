@@ -199,7 +199,7 @@
       </div>
       {{/each}} {{#each album}}
       <div class='card text-center' data-toggle="modal" data-target="#{{this.mbid}}">
-        <img class='card-img-top' src="{{this.Poster}}" alt="{{this.name}}">
+        <img class='card-img-top' src="{{this.mydia_image}}" alt="{{this.name}}">
         <div class='card-block'>
             <p class="card-text align-middle">{{this.name}}</p>
           </div>
@@ -218,13 +218,11 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-4">
-                  <img class="modal-poster" src="{{this.Poster}}">
+                  <img class="modal-poster" src="{{this.mydia_image}}">
                 </div>
                 <div class="col-8">
                   <div id="modalTracks">
-                    {{#each this.tracks}}
-                    {{this.track}}
-                    {{/each}}
+                   {{this.track_listing}}
                   </div>
                 </div>
               </div>
@@ -235,78 +233,50 @@
                 </div>
               </div>
               <br>
-              <select>
+              <form action="/api/album/" method="POST">
+                <label for="userFormat">Format you own:</label>
+                <select id="userformat" name="user_format">
                         <option value="Vinyl">Vinyl</option>
-                        <option value="CD">DVD</option>
+                        <option value="CD">CD</option>
                         <option value="Tape">Tape</option>
-                        <option value="Digital">Digital</option>                        
-                    </select><br><br>
-              <button type="button" class="btn btn-default" id="modalButton">TEST</button>
+                        <option value="Digital">Digital</option> 
+                        <option value="Other">Other</option>                                                                       
+              </select>
+                <br><br>
+                <label for="userRating">Rate This ALbum:</label>
+                <select id="userRating" name="user_rating">
+                  <option value="0">No Rating</option>
+                  <option value="1">1 Star</option>
+                  <option value="2">2 Stars</option>
+                  <option value="3">3 Stars</option>
+                  <option value="4">4 Stars</option>
+                  <option value="5">5 Stars</option>                  
+              </select>
+                <br><br>
+                <label for="userComment">Comment:</label>
+                <br>
+                <textarea id="userComment" name="user_comment" cols="50"> </textarea>
+                <br>
+                <input type="hidden" name="title" value="{{this.name}}">
+                <input type="hidden" name="track_listing" value="{{this.track_listing}}">
+                <input type="hidden" name="artist" value="{{this.artist}}">
+                <input type="hidden" name="cover" value="{{this.mydia_image}}">
+                <input type="hidden" name="mbid" value="{{this.mbid}}">                
+
+                <button type="submit">Add to Collection</button>
+
+              </form>
             </div>
             <div class="modal-footer">
               <!-- footer area with buttons for a continued dialog -->
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
           <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
       </div>
-      {{/each}} {{#each album}}
-      <div class='card text-center' data-toggle="modal" data-target="#{{this.mbid}}">
-        <img class="card-img-top" src="{{this.mydia_image}}" alt="{{this.name}}">
-        <div class="card-block">
-          <p class="card-text align-middle">{{this.name}}</p>
-        </div>
-      </div>
-
-      <div class="modal fade" id="{{this.mbid}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <div class="row">
-                <div class="col-12">
-                  <h4 class="modal-title">"{{this.name}}" by {{this.artist}}</h4>
-                </div>
-              </div>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-4">
-                  <img class="modal-poster" src="{{this.Poster}}">
-                </div>
-                <div class="col-8">
-                  <div id="modalTracks">
-                    <ol>
-                      <li>{{this.tracks}}</li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-              <br>
-
-              <br>
-              <select>
-                        <option value="Blu">Blu-Ray</option>
-                        <option value="DVD">DVD</option>
-                        <option value="VHS">VHS</option>
-                    </select><br><br>
-              <button type="button" class="btn btn-default" id="modalButton">TEST</button>
-            </div>
-            <div class="modal-footer">
-              <!-- footer area with buttons for a continued dialog -->
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      {{/each}}
-
-
+      {{/each}} 
 
     </div>
   </div>
