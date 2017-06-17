@@ -205,6 +205,11 @@ body {
   max-width: 100% !important;
 }
 
+img.center {
+  display:block;
+  margin:auto;
+}
+
 @keyframes animationFrames{
   0% {
     opacity:0;

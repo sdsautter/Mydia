@@ -1,4 +1,4 @@
-$("#lookie").on("click", function(event) {
+$("#lookie").on("click", function (event) {
     event.preventDefault();
 
     var mediaSearch = $("#search").val().trim();
@@ -7,11 +7,14 @@ $("#lookie").on("click", function(event) {
     window.location.href = '/search/movie/' + mediaSearch;
 });
 
-$('.message a').click(function() {
-    $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+$('.message a').click(function () {
+    $('form').animate({
+        height: "toggle",
+        opacity: "toggle"
+    }, "slow");
 });
 
-$('.createuser').click(function() {
+$('.createuser').click(function () {
     event.preventDefault();
     var newUser = {
         newusername: $('#newUserName').val().trim(),
@@ -21,7 +24,7 @@ $('.createuser').click(function() {
     createUser(newUser);
 })
 
-$('.login').click(function() {
+$('.login').click(function () {
     event.preventDefault();
     var user = {
         name: $('#loginUser').val().trim(),
@@ -30,19 +33,24 @@ $('.login').click(function() {
     authenticatePassword(user);
 })
 
+$(document).ready(function () {
+    $("img.center").addClass('animated bounceInRight');
+});
+
 function createUser(userData) {
-    $.post('/api/user', userData, function() {
+    $.post('/api/user', userData, function () {
         window.location.href = '/'
     })
 }
 //used to hide scrollable div areas of user content.
 $(".respond").hide();
 
-$('img').on("error", function() {
+$('img').on("error", function () {
     $(this).parent().hide();
 });
+
 function authenticatePassword(userData) {
-    $.get('/api/user', userData.name, function(userTime) {
+    $.get('/api/user', userData.name, function (userTime) {
         var passwordAttempted = userData.password
         var passwordToCheck = userTime.password;
         if (userTime === null) {
@@ -51,10 +59,9 @@ function authenticatePassword(userData) {
             alert('Incorrect Password!')
         } else {
             localStorage.setItem('user', userTime.user_name);
-            localStorage.setItem('id', userTime.id); 
-            console.log(localStorage.getItem('user'));                     
+            localStorage.setItem('id', userTime.id);
+            console.log(localStorage.getItem('user'));
             window.location.href = '/home'
         }
     })
 }
-
